@@ -6,7 +6,7 @@ namespace DictionaryCheckApi.Models.Dto
     {
         [Required] // error if the field is empty
         [MaxLength(30)]
-        public string Text { get; set; }
+        public string TextWord { get; set; }
 
         [Required] // error if the field is empty
         [MaxLength(30)]

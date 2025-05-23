@@ -10,11 +10,14 @@ namespace DictionaryCheckApi
         {
             var builder = WebApplication.CreateBuilder(args);
 
-        
+
+
             builder.Services.AddDbContext<ApplicationDbContext>(option =>
             {
                 option.UseSqlServer(builder.Configuration.GetConnectionString("DefaultSQLConnection"));
             });
+
+            builder.Services.AddAutoMapper(typeof(MappingConfig));
 
             // Add services to the container.
 

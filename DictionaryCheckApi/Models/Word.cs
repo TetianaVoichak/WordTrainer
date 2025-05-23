@@ -8,7 +8,7 @@ namespace DictionaryCheckApi.Models
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)] // for automatic assignment in the id database
         public int Id { get; set; }
-        public string Text { get; set; }
+        public string TextWord { get; set; }
         public string Translation { get; set; }
         public string Theme { get; set; }
 

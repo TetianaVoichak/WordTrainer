@@ -1,18 +1,17 @@
 ﻿using System.ComponentModel.DataAnnotations;
 namespace DictionaryCheckApi.Models.Dto
 {
-    public class WordDTO
+    public class TranslationWordDTO
     {
-        public int Id { get; set; }
-        [Required] // error if the field is empty
+        [Required(ErrorMessage = "Word is required")]
         [RegularExpression(@"^[\p{L}\s\-]+$", ErrorMessage = "Only letters, spaces and hyphens are allowed.")]
-        [MaxLength(30)]
+
+        [StringLength(30, ErrorMessage = "Maximum translation length is 30 characters")]
         public string TextWord { get; set; }
 
-        [Required] // error if the field is empty
+        [Required(ErrorMessage = "Translation is required")]
         [RegularExpression(@"^[\p{L}\s\-]+$", ErrorMessage = "Only letters, spaces and hyphens are allowed.")]
-        [MaxLength(30)]
+        [StringLength(30, ErrorMessage = "Maximum translation length is 30 characters")]
         public string Translation { get; set; }
-        public string Theme { get; set; }
     }
 }
