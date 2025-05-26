@@ -105,7 +105,7 @@ moreInfo.addEventListener("click", () => {
   } else {
     addWordForm.style.visibility = "visible";
     //textBtnInstr.textContent = "Hide information";
-    document.querySelector(ADD_WORD).style.height = "240px";
+    document.querySelector(ADD_WORD).style.height = "300px";
   }
 })
 
@@ -191,8 +191,8 @@ fileSelector.addEventListener("change", (event) => {
 
 
 /* Function to check the file format.
-* Returns true if the format is correct, otherwise false.
-*/
+ * Returns true if the format is correct, otherwise false.
+ */
 
 const validateFileContent = str => str.split("\n").every(line => line.includes(" - "));
 
