@@ -8,32 +8,54 @@ body, footer {
   margin: 0 auto;
   background-color: #d1f4edcf;
 }
+
 .h1-info, .start-info
 {
   margin: 15px auto 15px 15px;
 }
-.infoInst
+.addWord
 {
-  height: 180px;
-  display: flex;
+  visibility: hidden;
+  margin: 15px auto 15px 15px;
+  height: 0px;
+  margin: 0 auto;
 }
+
 .info {
   font-weight: 700;
   color: rgb(31, 106, 81);
+  /*background-color:#C0E2CF;*/
+    display: flex;
+  align-items: center;
+  justify-content: space-between;
   background-color: cadetblue;
+}
+.info-text {
+  flex: 1;
+  padding-right: 20px;
+}
 
+.info-img {
+  flex: 1;
+  display: flex;
+  justify-content: flex-end;
+}
+.logo-img {
+  max-width: 100%;
+  height: auto;
 }
 .btn-instr
 {
   color: #fff;
 }
-.instruction {
+.instruction  /*.forma-add-words*/ {
   visibility: hidden;
   margin: 15px auto 15px 15px;
+  /*margin: 0 auto;*/
 }
-.btn-instr
+.btn-add-word-form-open
 {
-  height: 40px;
+  height: 60px;
   display: flex;
   cursor: pointer;
   width: 100%;
@@ -42,7 +64,6 @@ body, footer {
   font-weight: 700;
   border-color: #fff;
   color: #fff;
- 
 }
 
 .input_f {
@@ -81,6 +102,7 @@ body, footer {
   cursor: pointer;
   border-color: #fff;
 }
+
 .input__file-icon-wrap {
   display: flex;
   align-items: center;
@@ -101,6 +123,18 @@ body, footer {
   color: #fff;
 }
 
+.forma-add-words {
+   visibility: hidden;
+  font-size: 20px;
+  padding: 15px 0;
+  margin-top: 30px;
+  margin-bottom: 20px;
+  width: 100%;
+  left: 50%;
+  right: 50%;
+  border: none;
+  border-bottom: 1px solid #fff;
+}
 
 .forma-translate {
   font-size: 20px;
@@ -114,18 +148,17 @@ body, footer {
   border-bottom: 1px solid #fff;
 }
 
-.word-for-translate {
+.word-for-translate, .word-for-translate-in-forma {
   width: 100%;
   height: 30px;
   padding: 15px 0;
   margin-bottom: 20px;
   display: flex;
-
   border-bottom: 1px solid #fff;
   border-color: #fff;
 }
 
-.input-translate {
+.input-translate, .input-translate-in-forma {
   width: 100%;
   height: 30px;
   padding: 15px 0;
@@ -136,7 +169,7 @@ body, footer {
   background:  #fff;
 }
 
-.check-btn {
+.check-btn , .save-word-btn {
   height: 60px;
   margin-bottom: 15px;
   display: flex;
@@ -169,6 +202,7 @@ body, footer {
   border-color: #fff;
   color: #fff;
 }
+
 .help-word {
   visibility: hidden;
   margin: 15px 15px 0 15px;
@@ -179,6 +213,7 @@ body, footer {
 {
   color: rgb(31, 106, 81);
   background-color: cadetblue;
+  /*background-color:#C0E2CF;*/
   height: 50px;
   position: relative;
 }

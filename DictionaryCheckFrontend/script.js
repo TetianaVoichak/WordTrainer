@@ -32,7 +32,6 @@ class WordTranslate {
       textResult.style.color = "#FA8072";
     }
   }
-
 }
 
 //function a word for translate output
@@ -68,7 +67,6 @@ let rememberAllWordsForATranslation = function () {
     words[i] = allWords[index].translate;
     allWords[index].translate = allWords[i].translate;
     allWords[i].translate = words[i];
-
   }
 }
 
@@ -77,7 +75,7 @@ const RESULT = ".result";
 const INPUT_FILE = ".input__file";
 const WORLD_FOR_TRANSLATE = ".word-for-translate";
 const HELP_WORD = ".help-word";
-const INFO_INSTRUCTION = ".infoInst";
+const ADD_WORD = ".addWord";
 
 let wordforTranslate = document.querySelector(WORLD_FOR_TRANSLATE);
 let textResult = document.querySelector(RESULT);
@@ -89,26 +87,26 @@ let helpWord = document.querySelector(HELP_WORD);
 let allWords = []; //massiv with 2 words(a word and his translate)
 let words = [];
 let infoErrFile = document.querySelector(".error-file");
-let moreInfo = document.querySelector(".btn-instr");
+let moreInfo = document.querySelector(".btn-add-word-form-open");
 let transl = document.querySelector(INPUT_TRANSLATE);
 
 
 moreInfo.addEventListener("click", () => {
-  let instruction = document.querySelector(".instruction");
-  let textBtnInstr = document.querySelector(".btn-instr");
+  let addWordForm = document.querySelector(".forma-add-words ");
 
-  if (instruction.style.visibility == "visible") {
-    instruction.style.visibility = "hidden";
-    textBtnInstr.textContent = "Instruction click here";
-    document.querySelector(INFO_INSTRUCTION).style.height = "190px";
+  //let textBtnAddWord = document.querySelector(".btn-add-word-form-open");
+
+  if (addWordForm.style.visibility == "visible") {
+    addWordForm.style.visibility = "hidden";
+    //textBtnInstr.textContent = "Instruction click here";
+    document.querySelector(ADD_WORD).style.height = "0px";
 
 
   } else {
-    instruction.style.visibility = "visible";
-    textBtnInstr.textContent = "Hide information";
-    document.querySelector(INFO_INSTRUCTION).style.height = "390px";
+    addWordForm.style.visibility = "visible";
+    //textBtnInstr.textContent = "Hide information";
+    document.querySelector(ADD_WORD).style.height = "240px";
   }
-
 })
 
 //check word with translate
@@ -124,9 +122,7 @@ btnCheck.addEventListener("click", () => {
 function showError(message) {
   infoErrFile.textContent = message;
   infoErrFile.style.visibility = "visible";
-
 }
-
 
 
 // Function to reset the error message

@@ -32,42 +32,41 @@
       <link rel="stylesheet" href="css/normalize.css" />
       <link rel="stylesheet" href="css/style.css" />
 
-      <title>Test yourself</title>
+      <title>Your worg trainer</title>
     </head>
 
     <body>
-      <header>
-        <div class="container">
-          <div class = "infoInst">
-          <div class="info">
-            <h1 class="h1-info">Welcome!</h1>
-            <p class = "start-info">
-              You can start. This
-              web site helps you with learning words. You can write in
-              the separate file words which you want to learn.
-            </p>
-            <button class="btn-instr" type="submit">Instruction click here.</button>
-            
-            <div class = "instruction">
-              <p> Create a txt file (only this exstension). Write a couple of word like this:        
-                  <p></p>
-                  word 1 - translate 1<br>
-                  word 2 - translate 2 <br>
-                  <p></p>
-                  Here appear word 2 which you will translate. <br>
-                  You decide how write this words.<br>
-                  In  a package with this web site you can found a examply file. <br>
-                  You can create as many files as you want. Then select this files.<br>
-                  And exrecise!<br>
-              </p> 
-            </div>
-          </div>
-        </div>
+<header>
+  <div class="container">
+    <div class="info">
+      <div class="info-text">
+        <h1 class="h1-info">Your Word Trainer</h1>
+        <p class="start-info">
+          You can start. This web site helps you with learning words.
+        </p>
       </div>
-      </header>
-      <main>
-          <div class="container">
-           
+      <div class="info-img">
+        <img class="logo-img" src="./images/logo-img-laptop-minz.svg" alt="logo">
+      </div>
+    </div>
+  </div>
+</header>
+  <main>
+  <div class="container">
+    <button class="btn-add-word-form-open" type="submit">Add a word</button> 
+     <div class = "addWord">
+            <!--forma-add-words-->       
+              <div class="forma-add-words">
+                <input class="word-for-translate-in-forma" type="text" />
+                <input class="input-translate-in-forma" type="text"  />
+                <button
+                class="save-word-btn"
+                type="submit"  
+                >
+                Save   
+            </div>
+      </div>
+
              <div class="input_f">
                   <input id="input__file" type="file"  accept=".txt" class = "input input__file"/>
                   <label for="input__file" class="input-file-btn">
