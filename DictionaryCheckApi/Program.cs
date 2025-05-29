@@ -1,5 +1,6 @@
 
 using DictionaryCheckApi.Data;
+using Microsoft.Data.SqlClient;
 using Microsoft.EntityFrameworkCore;
 
 namespace DictionaryCheckApi
@@ -8,14 +9,14 @@ namespace DictionaryCheckApi
     {
         public static void Main(string[] args)
         {
+
             var builder = WebApplication.CreateBuilder(args);
-
-
 
             builder.Services.AddDbContext<ApplicationDbContext>(option =>
             {
-                option.UseSqlServer(builder.Configuration.GetConnectionString("DefaultSQLConnection"));
+                option.UseSqlServer(builder.Configuration.GetConnectionString("WordTrainerConnection"));
             });
+
 
             builder.Services.AddAutoMapper(typeof(MappingConfig));
 

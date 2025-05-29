@@ -230,3 +230,5 @@ btnStart.addEventListener("click", () => {
 btnHelp.addEventListener("click", () => {
   showRightWord(document.querySelector(WORLD_FOR_TRANSLATE).value)
 })
+
+

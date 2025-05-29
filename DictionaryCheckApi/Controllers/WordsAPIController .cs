@@ -55,7 +55,7 @@ namespace DictionaryCheckApi.Controllers
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
         [ProducesResponseType(StatusCodes.Status500InternalServerError)]
         public async Task<ActionResult<APIResponse>> CheckWordTranslate([FromBody] TranslationWordDTO checkTranslateDTO)
-        {
+         {
             try
             {
                 //It checks whether the input data that came into the model (DTO) is correct,
@@ -104,5 +104,7 @@ namespace DictionaryCheckApi.Controllers
             }
             
         }
+
+
     }
 }
