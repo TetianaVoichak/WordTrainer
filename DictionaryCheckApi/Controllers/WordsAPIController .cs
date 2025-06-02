@@ -92,7 +92,9 @@ namespace DictionaryCheckApi.Controllers
                     CorrectTranslation = word.Translation
                 };
 
+                _response.Result = response;
                 _response.StatusCode = HttpStatusCode.OK;
+                _response.IsSuccess = true;
 
                 return Ok(_response);
             }
@@ -101,10 +103,7 @@ namespace DictionaryCheckApi.Controllers
                 _response.IsSuccess = false;
                 _response.ErrorMessages = new List<string>() { ex.ToString() };
                 return StatusCode(500, _response);
-            }
-            
+            }            
         }
-
-
     }
 }

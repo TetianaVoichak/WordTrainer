@@ -12,6 +12,17 @@ namespace DictionaryCheckApi
 
             var builder = WebApplication.CreateBuilder(args);
 
+            // Adding CORS 
+            builder.Services.AddCors(options =>
+            {
+                options.AddPolicy("AllowAll", policy =>
+                {
+                    policy.AllowAnyOrigin()
+                          .AllowAnyHeader()
+                          .AllowAnyMethod();
+                });
+            });
+
             builder.Services.AddDbContext<ApplicationDbContext>(option =>
             {
                 option.UseSqlServer(builder.Configuration.GetConnectionString("WordTrainerConnection"));
@@ -28,6 +39,9 @@ namespace DictionaryCheckApi
             builder.Services.AddSwaggerGen();
 
             var app = builder.Build();
+
+            // Applying CORS
+            app.UseCors("AllowAll");
 
             // Configure the HTTP request pipeline.
             if (app.Environment.IsDevelopment())

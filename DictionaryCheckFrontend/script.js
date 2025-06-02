@@ -1,3 +1,5 @@
+/*const { default: axios } = require("axios");
+/*
 class WordTranslate {
   constructor(word, translate) {
     this.word = word;
@@ -33,6 +35,7 @@ class WordTranslate {
     }
   }
 }
+*/
 
 //function a word for translate output
 
@@ -71,14 +74,14 @@ let rememberAllWordsForATranslation = function () {
 }
 
 const INPUT_TRANSLATE = ".input-translate";
-const RESULT = ".result";
+const RESULT_OF_TRANSLATE = ".result";
 const INPUT_FILE = ".input__file";
-const WORLD_FOR_TRANSLATE = ".word-for-translate";
+const WORD_FOR_TRANSLATE = ".word-for-translate";
 const HELP_WORD = ".help-word";
 const ADD_WORD = ".addWord";
 
-let wordforTranslate = document.querySelector(WORLD_FOR_TRANSLATE);
-let textResult = document.querySelector(RESULT);
+let wordforTranslate = document.querySelector(WORD_FOR_TRANSLATE);
+let textResult = document.querySelector(RESULT_OF_TRANSLATE);
 let btnCheck = document.querySelector(".check-btn");
 const fileSelector = document.querySelector(INPUT_FILE);
 let btnStart = document.querySelector(".start-btn");
@@ -90,6 +93,11 @@ let infoErrFile = document.querySelector(".error-file");
 let moreInfo = document.querySelector(".btn-add-word-form-open");
 let transl = document.querySelector(INPUT_TRANSLATE);
 
+
+const protocol = "http";
+const hostName = "localhost";
+const port = 5189;
+const baseUrl = `${protocol}://${hostName}:${port}`;
 
 moreInfo.addEventListener("click", () => {
   let addWordForm = document.querySelector(".forma-add-words ");
@@ -110,13 +118,13 @@ moreInfo.addEventListener("click", () => {
 })
 
 //check word with translate
-
+/*
 btnCheck.addEventListener("click", () => {
-  let firstWord = document.querySelector(WORLD_FOR_TRANSLATE).value;
+  let firstWord = document.querySelector(WOLD_FOR_TRANSLATE).value;
   let ansverWord = document.querySelector(INPUT_TRANSLATE).value;
   let words = new WordTranslate(firstWord, ansverWord);
   words.checkWord();
-});
+});*/
 
 // Function to display error message
 function showError(message) {
@@ -134,7 +142,7 @@ function resetError() {
 //reset information from previous file
 function resetInfoFromPreviousFile() {
   allWords.length = 0;
-  document.querySelector(WORLD_FOR_TRANSLATE).value = "";
+  document.querySelector(WORD_FOR_TRANSLATE).value = "";
   document.querySelector(INPUT_TRANSLATE).value = "";
   document.querySelector(HELP_WORD).textContent = "";
   document.querySelector(RESULT).textContent = "";
@@ -228,7 +236,88 @@ btnStart.addEventListener("click", () => {
 
 //show word if you dont know his translate
 btnHelp.addEventListener("click", () => {
-  showRightWord(document.querySelector(WORLD_FOR_TRANSLATE).value)
+  showRightWord(document.querySelector(WORD_FOR_TRANSLATE).value)
 })
+/*
+//Load the word from the API and insert it into the input when the page loads
+document.addEventListener("DOMContentLoaded", () => {
+
+  // Send a GET request to the API to get a random word
+  fetch('http://localhost:5000/api/word')
+    .then(response => response.json())// Convert the response to JSON
+    .then(data => {
+      // Insert the received word into the input field with id="wordInput"
+      document.getElementById('wordInput').value = data.word;
+    })
+    .catch(error => {
+      console.error('Error loading the word:', error);
+    });
+});
+*/
+
+document.addEventListener("DOMContentLoaded", () => {
 
 
+  console.log('wordforTranslate:', wordforTranslate);
+
+  // Send a GET request to the API to get a random word
+  axios.get(`${baseUrl}/api/WordAPI`)
+    .then(response => {
+      console.log("Requested: ", response.data);
+      if (wordforTranslate) {
+        wordforTranslate.value = response.data.result.textWord;
+
+      } else {
+        console.error('Element with id "wordforTranslate" not found.');
+      }
+    })
+    .catch(error => {
+      console.error('Error loading the word:', error);
+    });
+});
+
+
+//check a translate
+btnCheck.addEventListener('click', (event) => {
+  event.preventDefault();//This prevents the page from reloading
+  wordforTranslate = document.querySelector(WORD_FOR_TRANSLATE);
+  console.log(wordforTranslate.value);
+  transl = document.querySelector(INPUT_TRANSLATE);
+  console.log(transl.value);
+  //btnCheck = document.querySelector(".check-btn");
+  //send a POST request to the API to send a translate
+
+  axios.post(`${baseUrl}/api/WordAPI/check`, {
+    // data to send to server
+    Translation: transl.value,
+    TextWord: wordforTranslate.value
+  })
+    .then(response => {
+      console.log("Response:", response.data);
+      if (response.data && response.data.result) {
+        console.log("Is the translation correct?:", response.data.result.correct);
+        const isCorrect = response.data.result.correct;
+        const message = response.data.result.message;
+        if (isCorrect) {
+          textResult.style.visibility = "visible";
+          transl.style.background = "#20B2AA";
+          textResult.textContent = message;
+          textResult.style.color = "#20B2AA";
+        }
+        else {
+          textResult.style.visibility = "visible";
+          transl.style.background = "#FA8072";
+          textResult.textContent = message;
+          textResult.style.color = "#FA8072";
+        }
+
+      } else {
+        textResult.textContent = "Unexpected server response.";
+      }
+
+    })
+    .catch(error => {
+      console.error('Error sending translation:', error);
+      textResult.textContent = "Error sending translation.";
+    });
+});
