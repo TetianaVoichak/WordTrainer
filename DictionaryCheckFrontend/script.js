@@ -318,6 +318,9 @@ btnCheck.addEventListener('click', (event) => {
     })
     .catch(error => {
       console.error('Error sending translation:', error);
-      textResult.textContent = "Error sending translation.";
+      textResult.style.visibility = "visible";
+      transl.style.background = "#FA8072";
+      textResult.textContent = "WRONG";
+      textResult.style.color = "#FA8072";
     });
 });
