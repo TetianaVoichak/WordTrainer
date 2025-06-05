@@ -99,7 +99,7 @@ footer {
 
 .input-file-btn {
     height: 60px;
-  background: #b0f0e5cf;
+    background: #b0f0e5cf;
       /*background:#C3D9CD;*/
     color: #fff;
     font-weight: 700;
@@ -220,7 +220,7 @@ footer {
     color: #fff;
 }
 
-.help-word {
+.help-word, .save-word-result {
     visibility: hidden;
     margin: 15px 15px 0 15px;
     color: rgb(31, 106, 81);

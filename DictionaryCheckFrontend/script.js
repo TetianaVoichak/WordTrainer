@@ -13,7 +13,12 @@ let btnCheck = document.querySelector(".check-btn");
 const fileSelector = document.querySelector(INPUT_FILE);
 let btnStart = document.querySelector(".start-btn");
 let btnHelp = document.querySelector(".help-btn");
+let btnSave = document.querySelector(".save-word-btn");
+let wordSave = null;
+let translateSave = null;
+let themeSave = null;
 let helpWordText = null; //Variable for storing the translation value for later display
+let saveWordResult = document.querySelector(".save-word-result");
 let helpWord = document.querySelector(HELP_WORD);
 let allWords = []; //massiv with 2 words(a word and his translate)
 let words = [];
@@ -35,7 +40,6 @@ addWords.addEventListener("click", () => {
     } else {
         addWordForm.style.display = "block";
         document.querySelector(ADD_WORD).style.height = "350px";
-
     }
 })
 
@@ -181,3 +185,32 @@ btnCheck.addEventListener('click', (event) => {
             textResult.style.color = "#FA8072";
         });
 });
+
+
+//send word to server
+
+btnSave.addEventListener('click', (event) => {
+    event.preventDefault(); //This prevents the page from reloading
+    wordSave = document.querySelector(".word-for-translate-in-forma");
+    translateSave = document.querySelector(".input-translate-in-forma");
+    themeSave = document.querySelector(".input-theme-in-forma");
+
+    //send a POST request
+    axios.post(`${baseUrl}/api/WordAPI/add`, {
+        // data to send to server
+        TextWord: wordSave.value,
+        Translation: translateSave.value,
+        Theme: themeSave.value
+    })
+        .then(response => {
+            console.log("Response:", response.data);
+            saveWordResult.textContent = "Successfully.";
+            saveWordResult.style.visibility = "visible";
+        })
+        .catch(error => {
+            console.error('Error saving the word:', error);
+            saveWordResult.textContent = "Error, word not saved.";
+            saveWordResult.style.visibility = "visible";
+        });
+})
+
