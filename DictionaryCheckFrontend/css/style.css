@@ -18,8 +18,8 @@ footer {
 }
 
 .addWord {
-    visibility: hidden;
-    margin: 15px auto 15px 15px;
+   /* visibility: hidden;*/
+    /*margin: 15px auto 15px 15px;*/
     height: 0px;
     margin: 0 auto;
 }
@@ -55,12 +55,16 @@ footer {
 }
 
 .instruction
-
-/*.forma-add-words*/
-    {
+ {
     visibility: hidden;
     margin: 15px auto 15px 15px;
-    /*margin: 0 auto;*/
+}
+
+.info-instrucktion
+{
+        margin: 5px 15px 0 15px;
+        color: rgba(135, 137, 136, 0.941);
+        font-weight: 700;
 }
 
 .btn-add-word-form-open {
@@ -95,7 +99,8 @@ footer {
 
 .input-file-btn {
     height: 60px;
-    background: #b0f0e5cf;
+  background: #b0f0e5cf;
+      /*background:#C3D9CD;*/
     color: #fff;
     font-weight: 700;
     display: -webkit-box;
@@ -135,11 +140,9 @@ footer {
 }
 
 .forma-add-words {
-    visibility: hidden;
+    display: none;
     font-size: 20px;
     padding: 15px 0;
-    margin-top: 30px;
-    margin-bottom: 20px;
     width: 100%;
     left: 50%;
     right: 50%;
@@ -150,7 +153,7 @@ footer {
 .forma-translate {
     font-size: 20px;
     padding: 15px 0;
-    margin-top: 30px;
+    /*margin-top: 30px;*/
     margin-bottom: 20px;
     width: 100%;
     left: 50%;
@@ -222,6 +225,20 @@ footer {
     margin: 15px 15px 0 15px;
     color: rgb(31, 106, 81);
     font-weight: 700;
+}
+
+.thema-area {
+
+    margin: 15px 15px 0 15px;
+    color: rgb(31, 106, 81);
+    font-weight: 700;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+.thema-word
+{
+       visibility: hidden;
 }
 
 .footer-info {
