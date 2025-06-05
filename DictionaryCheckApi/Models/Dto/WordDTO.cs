@@ -13,6 +13,9 @@ namespace DictionaryCheckApi.Models.Dto
         [RegularExpression(@"^[\p{L}\s\-]+$", ErrorMessage = "Only letters, spaces and hyphens are allowed.")]
         [MaxLength(30)]
         public string Translation { get; set; }
+
+        [RegularExpression(@"^[\p{L}\s\-]+$", ErrorMessage = "Only letters, spaces and hyphens are allowed.")]
+        [MaxLength(30)]
         public string Theme { get; set; }
     }
 }

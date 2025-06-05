@@ -10,5 +10,7 @@ namespace DictionaryCheckApi.Repository.IRepository
         Task CreateAsync(T entity);
         Task RemoveAsync(T entity);
         Task SaveAsync();
+
+        Task<T> GetRandomAsync(); //a method that returns a random word
     }
 }

@@ -1,5 +1,8 @@
 
 using DictionaryCheckApi.Data;
+using DictionaryCheckApi.Models;
+using DictionaryCheckApi.Repository;
+using DictionaryCheckApi.Repository.IRepository;
 using Microsoft.Data.SqlClient;
 using Microsoft.EntityFrameworkCore;
 
@@ -28,7 +31,8 @@ namespace DictionaryCheckApi
                 option.UseSqlServer(builder.Configuration.GetConnectionString("WordTrainerConnection"));
             });
 
-
+            //builder.Services.AddScoped < IRepository<Word>, Repository<Word>>();
+            builder.Services.AddScoped(typeof(IRepository<>), typeof(Repository<>));
             builder.Services.AddAutoMapper(typeof(MappingConfig));
 
             // Add services to the container.

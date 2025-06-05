@@ -52,5 +52,9 @@ namespace DictionaryCheckApi.Repository
         {
             await _db.SaveChangesAsync();
         }
+        public async Task<T> GetRandomAsync()
+        {
+            return await dbSet.OrderBy(w => Guid.NewGuid()).FirstOrDefaultAsync();
+        }
     }
 }

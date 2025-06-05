@@ -1,5 +1,7 @@
 ﻿using DictionaryCheckApi.Models;
 using Microsoft.EntityFrameworkCore;
+using System.Collections.Generic;
+
 
 namespace DictionaryCheckApi.Data
 {
@@ -12,5 +14,7 @@ namespace DictionaryCheckApi.Data
 
         }
         public DbSet<Word> Words { get; set; }
+
+       
     }
 }
