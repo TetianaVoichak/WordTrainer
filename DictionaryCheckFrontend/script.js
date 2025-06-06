@@ -195,6 +195,7 @@ btnSave.addEventListener('click', (event) => {
         .catch(error => {
             console.error('Error saving the word:', error);
             saveWordResult.textContent = "Error, word not saved.";
+            saveWordResult.style.color = "#FA8072";
             saveWordResult.style.visibility = "visible";
         });
 })
