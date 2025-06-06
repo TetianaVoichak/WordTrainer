@@ -10,7 +10,7 @@ namespace DictionaryCheckApi.Models
         public int Id { get; set; }
         public string TextWord { get; set; }
         public string Translation { get; set; }
-        public string Theme { get; set; }
+        public string? Theme { get; set; }
 
     }
 }

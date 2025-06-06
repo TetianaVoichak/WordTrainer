@@ -1,28 +1,27 @@
 const INPUT_TRANSLATE = ".input-translate";
 const RESULT_OF_TRANSLATE = ".result";
-const INPUT_FILE = ".input__file";
 const WORD_FOR_TRANSLATE = ".word-for-translate";
 const HELP_WORD = ".help-word";
 const ADD_WORD = ".addWord";
 
 let wordforTranslate = document.querySelector(WORD_FOR_TRANSLATE);
 let textResult = document.querySelector(RESULT_OF_TRANSLATE);
-let textThema = null;
 let themaWord = document.querySelector(".thema-word");
+
 let btnCheck = document.querySelector(".check-btn");
-const fileSelector = document.querySelector(INPUT_FILE);
 let btnStart = document.querySelector(".start-btn");
 let btnHelp = document.querySelector(".help-btn");
 let btnSave = document.querySelector(".save-word-btn");
+
 let wordSave = null;
 let translateSave = null;
 let themeSave = null;
+
 let helpWordText = null; //Variable for storing the translation value for later display
 let saveWordResult = document.querySelector(".save-word-result");
 let helpWord = document.querySelector(HELP_WORD);
-let allWords = []; //massiv with 2 words(a word and his translate)
-let words = [];
-let infoErrFile = document.querySelector(".error-file");
+
+
 let addWords = document.querySelector(".btn-add-word-form-open");
 let transl = document.querySelector(INPUT_TRANSLATE);
 let addWordForm = document.querySelector(".forma-add-words ");
@@ -32,54 +31,40 @@ const hostName = "localhost";
 const port = 5189;
 const baseUrl = `${protocol}://${hostName}:${port}`;
 
+//Opening an area for adding a word
 addWords.addEventListener("click", () => {
 
     if (addWordForm.style.display == "block") {
         addWordForm.style.display = "none";
         document.querySelector(ADD_WORD).style.height = "0px";
+        document.querySelector(".forma-translate").style.marginTop = "0px";
+        resetInfoAddBlock();
     } else {
         addWordForm.style.display = "block";
-        document.querySelector(ADD_WORD).style.height = "350px";
+        document.querySelector(ADD_WORD).style.height = "370px";
+        document.querySelector(".forma-translate").style.marginTop = "30px";
     }
 })
 
 
-// Function to display error message
-function showError(message) {
-    infoErrFile.textContent = message;
-    infoErrFile.style.visibility = "visible";
+
+//remove information from fields in the add word block
+function resetInfoAddBlock() {
+
+    wordSave = document.querySelector(".word-for-translate-in-forma").value = "";
+    translateSave = document.querySelector(".input-translate-in-forma").value = "";
+    themeSave = document.querySelector(".input-theme-in-forma").value = "";
 }
 
-
-// Function to reset the error message
-function resetError() {
-    infoErrFile.textContent = "";
-    infoErrFile.style.visibility = "hidden";
-}
 
 //reset information from previous file
 function resetInfoFromPreviousFile() {
-    allWords.length = 0;
     document.querySelector(WORD_FOR_TRANSLATE).value = "";
     document.querySelector(INPUT_TRANSLATE).value = "";
     document.querySelector(HELP_WORD).textContent = "";
     document.querySelector(RESULT).textContent = "";
 }
 
-
-//write info from file in a massiv with words
-
-let funcPutWordsFromFileInVariable = function (str) {
-    allWords.length = 0;
-    let strSplit = str.split('\n');
-    for (var i = 0; i < strSplit.length; i++) {
-        let temp = strSplit[i].split(' - ');
-        let coupleWords = new WordTranslate();
-        coupleWords.translate = temp[0];
-        coupleWords.word = temp[1].split('\r')[0];
-        allWords.push(coupleWords);
-    }
-}
 
 transl.addEventListener("click", () => {
     document.querySelector(INPUT_TRANSLATE).value = "";
@@ -99,8 +84,7 @@ function loadRandomWord() {
             if (wordforTranslate) {
                 wordforTranslate.value = response.data.result.textWord;
                 helpWordText = response.data.result.translation;
-                textThema = response.data.result.theme;
-                themaWord.textContent = textThema;
+                themaWord.textContent = response.data.result.theme;
                 themaWord.style.visibility = "visible";
             } else {
                 console.error('Element with id "wordforTranslate" not found.');
@@ -172,7 +156,6 @@ btnCheck.addEventListener('click', (event) => {
                     textResult.textContent = message;
                     textResult.style.color = "#FA8072";
                 }
-
             } else {
                 textResult.textContent = "Unexpected server response.";
             }
@@ -185,6 +168,7 @@ btnCheck.addEventListener('click', (event) => {
             textResult.style.color = "#FA8072";
         });
 });
+
 
 
 //send word to server
@@ -206,6 +190,7 @@ btnSave.addEventListener('click', (event) => {
             console.log("Response:", response.data);
             saveWordResult.textContent = "Successfully.";
             saveWordResult.style.visibility = "visible";
+            resetInfoAddBlock();
         })
         .catch(error => {
             console.error('Error saving the word:', error);
@@ -213,4 +198,3 @@ btnSave.addEventListener('click', (event) => {
             saveWordResult.style.visibility = "visible";
         });
 })
-

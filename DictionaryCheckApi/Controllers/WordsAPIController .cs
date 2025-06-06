@@ -17,12 +17,10 @@ namespace DictionaryCheckApi.Controllers
     {
         protected APIResponse _response;
         private readonly IRepository<Word> _dbWordI;
-        private readonly ApplicationDbContext _dbWord;
         private readonly IMapper _mapper;
 
-        public WordsAPIController(ApplicationDbContext dbWord, IMapper mapper, IRepository<Word> dbWordI)
+        public WordsAPIController(IMapper mapper, IRepository<Word> dbWordI)
         {
-            _dbWord = dbWord;
             _dbWordI = dbWordI;
             _mapper = mapper;
             _response = new();
@@ -142,7 +140,7 @@ namespace DictionaryCheckApi.Controllers
         [ProducesResponseType(StatusCodes.Status201Created)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
         [ProducesResponseType(StatusCodes.Status500InternalServerError)]
-        public async Task<ActionResult<APIResponse>> CreateVillaNumber([FromBody] WordCreateDTO createDTO)
+        public async Task<ActionResult<APIResponse>> CreateWord([FromBody] WordCreateDTO createDTO)
         {
             try
             {

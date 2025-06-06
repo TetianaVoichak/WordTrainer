@@ -18,8 +18,6 @@ footer {
 }
 
 .addWord {
-   /* visibility: hidden;*/
-    /*margin: 15px auto 15px 15px;*/
     height: 0px;
     margin: 0 auto;
 }
@@ -27,7 +25,6 @@ footer {
 .info {
     font-weight: 700;
     color: rgb(31, 106, 81);
-    /*background-color:#C0E2CF;*/
     display: flex;
     align-items: center;
     justify-content: space-between;
@@ -54,17 +51,10 @@ footer {
     color: #fff;
 }
 
-.instruction
- {
-    visibility: hidden;
-    margin: 15px auto 15px 15px;
-}
-
-.info-instrucktion
-{
-        margin: 5px 15px 0 15px;
-        color: rgba(135, 137, 136, 0.941);
-        font-weight: 700;
+.info-instruction {
+    margin: 5px 15px 0 15px;
+    color: rgba(135, 137, 136, 0.941);
+    font-weight: 700;
 }
 
 .btn-add-word-form-open {
@@ -79,49 +69,6 @@ footer {
     font-weight: 700;
     border-color: #fff;
     color: #fff;
-}
-
-.input_f {
-    font-size: 20px;
-    margin-top: 30px;
-}
-
-.input__file {
-    opacity: 0;
-    visibility: hidden;
-    position: absolute;
-}
-
-.input__file-icon {
-    margin: 10px 10px 10px;
-    display: flex;
-}
-
-.input-file-btn {
-    height: 60px;
-    background: #b0f0e5cf;
-      /*background:#C3D9CD;*/
-    color: #fff;
-    font-weight: 700;
-    display: -webkit-box;
-    display: -ms-flexbox;
-    display: flex;
-    left: 50px;
-    right: 50%;
-    -webkit-box-align: center;
-    -ms-flex-align: center;
-    align-items: center;
-    -webkit-box-pack: start;
-    -ms-flex-pack: start;
-    justify-content: flex-start;
-    border-radius: 3px;
-    cursor: pointer;
-    border-color: #fff;
-}
-
-.input__file-icon-wrap {
-    display: flex;
-    align-items: center;
 }
 
 
@@ -153,7 +100,6 @@ footer {
 .forma-translate {
     font-size: 20px;
     padding: 15px 0;
-    /*margin-top: 30px;*/
     margin-bottom: 20px;
     width: 100%;
     left: 50%;
@@ -220,7 +166,8 @@ footer {
     color: #fff;
 }
 
-.help-word, .save-word-result {
+.help-word,
+.save-word-result {
     visibility: hidden;
     margin: 15px 15px 0 15px;
     color: rgb(31, 106, 81);
@@ -236,15 +183,14 @@ footer {
     align-items: center;
     gap: 8px;
 }
-.thema-word
-{
-       visibility: hidden;
+
+.thema-word {
+    visibility: hidden;
 }
 
 .footer-info {
     color: rgb(31, 106, 81);
     background-color: cadetblue;
-    /*background-color:#C0E2CF;*/
     height: 50px;
     position: relative;
 }
@@ -256,4 +202,8 @@ footer {
     left: 50%;
     margin-right: -50%;
     transform: translate(-50%, -50%)
+}
+
+.heart {
+    color: white;
 }
