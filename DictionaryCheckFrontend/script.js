@@ -54,6 +54,8 @@ function resetInfoAddBlock() {
     wordSave = document.querySelector(".word-for-translate-in-forma").value = "";
     translateSave = document.querySelector(".input-translate-in-forma").value = "";
     themeSave = document.querySelector(".input-theme-in-forma").value = "";
+    saveWordResult = document.querySelector(".save-word-result").textContent = "";
+    saveWordResult.style.visibility = "hidden";
 }
 
 
