@@ -43,6 +43,8 @@ addWords.addEventListener("click", () => {
         addWordForm.style.display = "block";
         document.querySelector(ADD_WORD).style.height = "370px";
         document.querySelector(".forma-translate").style.marginTop = "30px";
+        saveWordResult.style.visibility = "hidden";
+
     }
 })
 
@@ -55,7 +57,6 @@ function resetInfoAddBlock() {
     translateSave = document.querySelector(".input-translate-in-forma").value = "";
     themeSave = document.querySelector(".input-theme-in-forma").value = "";
     saveWordResult = document.querySelector(".save-word-result").textContent = "";
-    saveWordResult.style.visibility = "hidden";
 }
 
 
