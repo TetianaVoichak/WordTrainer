@@ -18,7 +18,6 @@ let translateSave = null;
 let themeSave = null;
 
 let helpWordText = null; //Variable for storing the translation value for later display
-let saveWordResult = document.querySelector(".save-word-result");
 let helpWord = document.querySelector(HELP_WORD);
 
 
@@ -39,16 +38,15 @@ addWords.addEventListener("click", () => {
         document.querySelector(ADD_WORD).style.height = "0px";
         document.querySelector(".forma-translate").style.marginTop = "0px";
         resetInfoAddBlock();
+        saveWordResult = document.querySelector(".save-word-result").textContent = "";
     } else {
         addWordForm.style.display = "block";
         document.querySelector(ADD_WORD).style.height = "370px";
         document.querySelector(".forma-translate").style.marginTop = "30px";
         saveWordResult.style.visibility = "hidden";
-
+        saveWordResult = document.querySelector(".save-word-result").textContent = "";
     }
 })
-
-
 
 //remove information from fields in the add word block
 function resetInfoAddBlock() {
@@ -56,7 +54,6 @@ function resetInfoAddBlock() {
     wordSave = document.querySelector(".word-for-translate-in-forma").value = "";
     translateSave = document.querySelector(".input-translate-in-forma").value = "";
     themeSave = document.querySelector(".input-theme-in-forma").value = "";
-    saveWordResult = document.querySelector(".save-word-result").textContent = "";
 }
 
 
@@ -107,6 +104,7 @@ btnStart.addEventListener("click", () => {
     textResult.textContent = "";
     helpWord.textContent = "";
     loadRandomWord();
+
 })
 
 
@@ -181,6 +179,7 @@ btnSave.addEventListener('click', (event) => {
     wordSave = document.querySelector(".word-for-translate-in-forma");
     translateSave = document.querySelector(".input-translate-in-forma");
     themeSave = document.querySelector(".input-theme-in-forma");
+    let saveWordResult = document.querySelector(".save-word-result");
 
     //send a POST request
     axios.post(`${baseUrl}/api/WordAPI/add`, {
@@ -192,13 +191,15 @@ btnSave.addEventListener('click', (event) => {
         .then(response => {
             console.log("Response:", response.data);
             saveWordResult.textContent = "Successfully.";
+            saveWordResult.style.color = "#20B2AA";
             saveWordResult.style.visibility = "visible";
             resetInfoAddBlock();
         })
         .catch(error => {
             console.error('Error saving the word:', error);
+            saveWordResult.style.visibility = "visible";
             saveWordResult.textContent = "Error, word not saved.";
             saveWordResult.style.color = "#FA8072";
-            saveWordResult.style.visibility = "visible";
+
         });
 })
