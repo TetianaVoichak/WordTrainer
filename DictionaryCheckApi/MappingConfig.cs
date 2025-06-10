@@ -9,7 +9,7 @@ namespace DictionaryCheckApi
         public MappingConfig()
         {
 
-            //transfer data from an object of type Villa to an object of type VillaDTO
+            //transfer data from an object of type Word to an object of type WordDTO
             CreateMap<Word, WordDTO>();
             CreateMap<WordDTO, Word>();
 
