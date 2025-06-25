@@ -32,6 +32,7 @@ namespace DictionaryCheckApi
             });
 
             //builder.Services.AddScoped < IRepository<Word>, Repository<Word>>();
+           
             builder.Services.AddScoped(typeof(IRepository<>), typeof(Repository<>));
             builder.Services.AddAutoMapper(typeof(MappingConfig));
 
